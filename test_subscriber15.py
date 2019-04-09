@@ -127,27 +127,27 @@ if __name__ == '__main__':
 
         # Creation of matrices A and B for solving using formula X=inv(A)*B
 
-        if abs(c1 / tim_t) < 0.001:
+        if abs(c1 / tim_t) < 0.01:
             c1_time = 0
         else:
             c1_time = c1 / tim_t
-        if abs(c2 / tim_t) < 0.001:
+        if abs(c2 / tim_t) < 0.01:
             c2_time = 0
         else:
             c2_time = c2 / tim_t
-        if abs(b1 / tim_t) < 0.001:
+        if abs(b1 / tim_t) < 0.01:
             b1_time = 0
         else:
             b1_time = b1 / tim_t
-        if abs(b2 / tim_t) < 0.001:
+        if abs(b2 / tim_t) < 0.01:
             b2_time = 0
         else:
             b2_time = b2 / tim_t
-        if abs(a1 / tim_t) < 0.001:
+        if abs(a1 / tim_t) < 0.01:
             a1_time = 0
         else:
             a1_time = a1 / tim_t
-        if abs(a2 / tim_t) < 0.001:
+        if abs(a2 / tim_t) < 0.01:
             a2_time = 0
         else:
             a2_time = a2 / tim_t
@@ -186,7 +186,7 @@ if __name__ == '__main__':
         twist_est_acc, twist_rot_est_acc = diff_calc_func(start_mat_est_acc, end_mat_est_acc, corrected_average_interval)
 
         print "Estimated acceleration value is ", twist_est_acc
-        print "Real accel val is ", twist_acc.x, twist_acc.y, twist_acc.z
+        print "Actual acceleration val is ", twist_acc.x, twist_acc.y, twist_acc.z
         # For checking the acceleration values
         (check_pos_start, check_quat_start) = listener.lookupTransform(tracking_frame, reference_frame, start_time)
         (check_pos_end, check_quat_end) = listener.lookupTransform(tracking_frame, reference_frame, end_time)
@@ -207,9 +207,9 @@ if __name__ == '__main__':
 
         # Normalize both acceleration vectors
         norm_val1 = np.linalg.norm(arr_accel_val)
-        print "The normal accel val is ", norm_val1
+        print "The normalized value of actual acceleration is ", norm_val1
         norm_val2 = np.linalg.norm(rot_est_acc_val)
-        print "The normal force val is ", norm_val2
+        print "The normalized value of estimated acceleration is ", norm_val2
 
         # Publish the accelerometer acceleration value
         accel_pub = geometry_msgs.msg.WrenchStamped()
